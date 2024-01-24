@@ -1,0 +1,104 @@
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-6 mx-auto mt-3 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="text-center">Add a Medicine</h4>
+          </div>
+          <div class="card-body">
+            <form #registerationForm="ngForm" class="needs-validation" novalidate>
+  
+              <div class="form-group">
+                <label for="medicineContinuity">Medicine Continuity:</label>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optradio" value="true"
+                      [(ngModel)]="product.available" required> Continued
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optradio" value="false"
+                      [(ngModel)]="product.available" required> Discontinued
+                  </label>
+                </div>
+              </div>
+              <hr>
+              <div class="form-group">
+                <label for="mname">Medicine Name:</label>
+                <input type="text" class="form-control" required #mname="ngModel" placeholder="Enter medicine name" id="mname" name="name" [(ngModel)]="product.name" ngModel>
+                <div class="invalid-feedback" *ngIf="mname.invalid && mname.touched">Please enter a valid medicine name.</div>
+              </div>
+              <div class="form-group">
+                <label for="bname">Medicine Brand Name:</label>
+                <input type="text" class="form-control" required #bname="ngModel" placeholder="Enter medicine brand name" id="bname" name="brand" [(ngModel)]="product.brand" ngModel>
+                <div class="invalid-feedback" *ngIf="bname.invalid && bname.touched">Please enter a valid medicine brand.</div>
+              </div>
+              <div class="form-group">
+                <label for="mctg">Medicine Category:</label>
+                <input type="text" class="form-control" required #mctg="ngModel" placeholder="Enter medicine category" id="mctg" name="category" [(ngModel)]="product.category" ngModel>
+                <div class="invalid-feedback" *ngIf="mctg.invalid && mctg.touched">Please enter a valid medicine category.</div>
+              </div>
+              <div class="form-group">
+                <label for="desc">Medicine Description:</label>
+                <input type="text" class="form-control" required #desc="ngModel" placeholder="Enter medicine description" id="desc" name="description" [(ngModel)]="product.description" ngModel>
+                <div class="invalid-feedback" *ngIf="desc.invalid && desc.touched">Please enter a valid medicine description.</div>
+              </div>
+              <div class="form-group">
+                <label for="scomp">Search keyword:</label>
+                <input type="text" class="form-control" required #scomp="ngModel" placeholder="Enter medicine Search keyword" id="scomp" name="salt" [(ngModel)]="product.salt" ngModel>
+                <div class="invalid-feedback" *ngIf="scomp.invalid && scomp.touched">Please enter a valid Search keyword.</div>
+              </div>
+              <div class="form-group">
+                <label for="stk">Total Stock (In Strip):</label>
+                <input type="number" class="form-control" required #stk="ngModel" placeholder="Enter total medicine stock" id="stk" name="totalAvailable" [(ngModel)]="product.totalAvailable" ngModel>
+                <div class="invalid-feedback" *ngIf="stk.invalid && stk.touched">Please enter a valid total stock.</div>
+              </div>
+              <div class="form-group">
+                <label for="pc">Unit Price:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">&#8377;</span>
+                  </div>
+                  <input type="number" class="form-control" required #pc="ngModel" placeholder="Enter medicine unit price" id="pc" name="price" [(ngModel)]="product.price" ngModel>
+                  <div class="invalid-feedback" *ngIf="pc.invalid && pc.touched">Please enter a valid unit price.</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="img">Select Medicine Image:</label>
+                <input type="file" class="form-control-file border" id="img" (change)="onChangeFileField($event)">
+              </div>
+              <hr>
+              <div class="text-center">
+                <div class="btn-group">
+                  <button (click)="onSubmit()" class="btn btn-primary" [disabled]="registerationForm.invalid" data-toggle="modal" data-target="#myModal">Add Medicine</button>
+                  <button type="reset" class="btn btn-danger">Reset</button>
+                </div>
+              </div>
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Add a new medicine</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <span *ngIf="isValid" style="color:green">{{message}}</span>
+                      <span *ngIf="!isValid" style="color:red">{{message}}</span>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClick()">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
